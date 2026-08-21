@@ -1,0 +1,14 @@
+---
+- name: Configurar meu arquivos de teste
+  hosts: testing
+  tasks:
+
+    - name: Garantir que o nano esteja instalado
+      dnf:
+        name: nano
+        state: present
+
+    - name: criar um arquivo de boas vindas
+      copy:
+        dest: /tmp/boas_vindas.txt
+        content: "Este servidor foi automatizado pelo Ansible!\n"

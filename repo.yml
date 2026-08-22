@@ -1,6 +1,6 @@
 ---
 - name: Repository configuration
-  hosts: all
+  hosts: testing
   vars:
     custom_pkg: simple-agent
 
@@ -9,5 +9,5 @@
       ansible.builtin.package_facts:
 
     - name: Display package facts for the custom package
-      ansible.builtin.degug:
+      ansible.builtin.debug:
         var: ansible_facts['packages'][custom_pkg]

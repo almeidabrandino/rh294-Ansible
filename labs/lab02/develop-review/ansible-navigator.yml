@@ -1,0 +1,8 @@
+---
+ansible-navigator:
+  app: welcome
+  collection-doc-cache-path: ~/.cache/ansible-navigator/collection_doc_cache.db
+  enable-prompts: false
+  format: yaml
+  mode: stdout
+  time-zone: UTC

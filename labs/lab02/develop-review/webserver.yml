@@ -1,6 +1,6 @@
 ---
 - name: Enable internet services
-  host: web
+  hosts: web
   become: true
   tasks:
     - name: Install all required packages
@@ -20,7 +20,7 @@
 
     - name: Firewalld permits http service # verificar task 6
       ansible.posix.firewalld:
-        service: https
+        service: http
         state: enabled
         permanent: true
         immediate: true
@@ -33,17 +33,18 @@
 
     - name: Test php page is installed
       ansible.builtin.copy:
+        src: index.php
         dest: /var/www/html/index.php # validar conteudo arquivo 
         mode: '0644'
         content: '# lab compreensive review #'
 
 - name: test access to the web server
-  host: servera.lab.example.com
+  hosts: node2.lab.example.com
   become: false
   tasks:
     - name: Connect to internet web server
       ansible.builtin.uri:
-        url: serverb.lab.example.com
+        url: node1.lab.example.com
         status_code: 200
       register: results
       failed_when: "'AWESOME' not in results.content"

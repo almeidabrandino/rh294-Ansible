@@ -1,10 +1,7 @@
-[defaults]
-inventory = ./hosts
-remote_user = automation
-ask_pass = false
+node2.lab.example.com ansible_host=192.168.56.12
+[web]
+node1.lab.example.com ansible_host=192.168.56.11
+[db]
+node3.lab.example.com
 
-[privilege_escalation]
-become = true
-become_method = sudo
-become_user = root
-become_ask_pass = false
+
